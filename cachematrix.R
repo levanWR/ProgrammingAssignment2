@@ -1,6 +1,6 @@
-## overall my functions takes matrix as argument, calculates inverse of the squared matrix and caches it. if it is already chached returns cached data
+## overall my functions take matrix as an argument, calculates inverse of the squared matrix and caches it. if it is already cached returns cached data.
 
-##this function takes matrix as argument and creates list of four 
+##this function takes matrix as an argument and creates list of four 
 makeCacheMatrix<-function(x=matrix()){
   m<-NULL
   set<-function(y){
@@ -16,7 +16,7 @@ makeCacheMatrix<-function(x=matrix()){
   
 }
 
-##this function caculates inverse and if its already chached returs cached value
+##this function takes matrix created above as an argument, if inverse already cached returs cached value otherwise caculates inverse and caches it in the list.
 cacheSolve<- function(x, ...){
   m<-x$getSolve()
   if(!is.null(m)){
