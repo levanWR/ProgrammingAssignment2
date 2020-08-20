@@ -1,15 +1,32 @@
-## Put comments here that give an overall description of what your
-## functions do
+## overall my functions takes matrix as argument, calculates inverse of the squared matrix and caches it. if it is already chached returns cached data
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-
+##this function takes matrix as argument and creates list of four 
+makeCacheMatrix<-function(x=matrix()){
+  m<-NULL
+  set<-function(y){
+    x<<-y
+    m<<-NULL
+  }
+  get<-function()x
+  setSolve<-function(solve) m<<- solve
+  getSolve<-function() m
+  list(set=set, get=get,
+       setSolve=setSolve,
+       getSolve=getSolve)
+  
 }
 
-
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-}
+##this function caculates inverse and if its already chached returs cached value
+cacheSolve<- function(x, ...){
+  m<-x$getSolve()
+  if(!is.null(m)){
+    message("getting cached data")
+    return(m)
+  }
+  data<-x$get()
+  m<-solve(data, ...)
+  x$setSolve(m)
+  m
+  
+  
+} 
